@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* ------------------------------
+   RESET E BASE
+------------------------------ */
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+
+  color: #111;
+  line-height: 1.6;
+}
+
+/* ------------------------------
+   VARIÁVEIS DE TEMA
+------------------------------ */
+
+:root {
+  --preto: #0a0a0a;
+  --cinza-escuro: #1a1a1a;
+  --cinza: #8b8686;
+  --cinza-claro: #d4d4d4;
+  --branco: #ffffff;
+
+  --destaque: #f4a261; /* opcional para detalhes */
+}
+
+/* ------------------------------
+   TIPOGRAFIA GLOBAL
+------------------------------ */
+
+h1 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  
+}
+
+p {
+  text-align: justify;
+}
+
+/* ------------------------------
+   CONTAINERS
+------------------------------ */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ------------------------------
+   BOTÕES
+------------------------------ */
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-dark {
+  background: var(--preto);
+  color: var(--branco);
+}
+
+.btn-dark:hover {
+  background: var(--cinza-escuro);
+}
+
+/* ------------------------------
+   ANIMAÇÕES SUAVES
+------------------------------ */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------
+   PADRÃO PANU DI TÉRA (FAIXA)
+------------------------------ */
+
+
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
+
+footer {
+  background: var(--preto);
+  color: var(--cinza-claro);
+  padding: 3rem 0;
+}
+
+footer a {
+  color: var(--cinza-claro);
+  text-decoration: none;
+  transition: 0.3s ease;
+  background-color: var(--preto);
+}
+
+footer a:hover {
+  color: var(--branco);
+}
+
+
+
+/* ------------------------------ */
+/* ANIMAÇÕES */
+/* ------------------------------ */
+
+/* Slide do menu mobile */
+@keyframes slideLeft {
+  from { transform: translateX(100%) }
+  to { transform: translateX(0) }
+}
+
+.animate-slideLeft {
+  animation: slideLeft 0.35s ease-out forwards;
+}
+
+/* Fade in suave */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+/* Slide up suave */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+
+.animate-slideUp {
+  animation: slideUp 1.2s ease-out forwards;
+}
+
+/* Flutuação suave (imagem do hero) */
+@keyframes float {
+  0% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+  100% { transform: translateY(0) }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* FadeUp para cards de projetos */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
