@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { db } from "../firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 const empregados = [
   { nome: "Álvaro", cor: "#98FB98" },
@@ -17,36 +19,49 @@ export default function Tarefas() {
   const [editMode, setEditMode] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [cards, setCards] = useState([]);
 
   // ============================
-  // 1. Carregar tarefas guardadas
-  // ============================
-  const [cards, setCards] = useState(() => {
-    const guardado = localStorage.getItem("tarefasCards");
-    if (guardado) {
-      return JSON.parse(guardado);
-    }
-    return empregados.map(() => ({
-      tarefas: [
-        "Arrumar sala de dentro",
-        "Talheres",
-        "Guardanapos",
-        "Casas de banho"
-      ]
-    }));
-  });
-
-  // ============================
-  // 2. Guardar sempre que muda
+  // 1. Carregar tarefas do Firebase
   // ============================
   useEffect(() => {
-    localStorage.setItem("tarefasCards", JSON.stringify(cards));
-  }, [cards]);
+    async function carregar() {
+      const ref = doc(db, "tarefas", "empregados");
+      const snap = await getDoc(ref);
+
+      if (snap.exists()) {
+        setCards(snap.data().cards);
+      } else {
+        // Se não existir, cria estrutura inicial
+        const inicial = empregados.map(() => ({
+          tarefas: [
+            "Arrumar sala de dentro",
+            "Talheres",
+            "Guardanapos",
+            "Casas de banho"
+          ]
+        }));
+        setCards(inicial);
+        await updateDoc(ref, { cards: inicial });
+      }
+    }
+
+    carregar();
+  }, []);
+
+  // ============================
+  // 2. Guardar no Firebase
+  // ============================
+  const guardarFirebase = async (novo) => {
+    const ref = doc(db, "tarefas", "empregados");
+    await updateDoc(ref, { cards: novo });
+  };
 
   const editarTarefa = (cardIndex, tarefaIndex, novoTexto) => {
     const copia = [...cards];
     copia[cardIndex].tarefas[tarefaIndex] = novoTexto;
     setCards(copia);
+    guardarFirebase(copia);
   };
 
   const validarPassword = () => {
@@ -61,10 +76,10 @@ export default function Tarefas() {
   return (
     <section id="Tarefas" className="max-w-5xl mx-auto px-4 py-10 text-black">
 
-      <h1 className="text-black text-4xl font-bold mb-2">Tarefas de cada empregado </h1>
+      <h1 className="text-black text-4xl font-bold mb-2">Tarefas de cada empregado</h1>
 
       <div className="inline-block px-4 py-1 bg-yellow-500 text-black font-semibold rounded-full mb-8">
-        4 a  9 de agosto
+        4 a 9 de agosto
       </div>
 
       {!editMode && (
