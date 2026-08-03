@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { db } from "../firebase";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 
 const empregados = [
   { nome: "Álvaro", cor: "#98FB98" },
@@ -15,43 +15,40 @@ const empregados = [
   { nome: "Valéria", cor: "#a855f7" }
 ];
 
+// =======================================
+// 1. Tarefas manuais — 4 por empregado
+// =======================================
+const cardsInicial = [
+  { tarefas: ["Montar sala de dentro", "Talheres de manhã", "Varrer o chão", "Atender os clientes"] }, // Álvaro
+
+  { tarefas: ["Organizar o balcão", "Preparar couvert", "Fornecer sobremesas", "Apoiar a sala de vidro, se possível"] }, // Carolina
+
+  { tarefas: ["Repor bebidas a tarde", "Lavar caixotes (semanal)", "Organizar esplanada à noite", "Atender clientes"] }, // Emanuel
+
+  { tarefas: ["Barris lá fora", "Varrer esplanada", "Lixo da noite", "Atender clientes"] }, // Filipe
+
+  { tarefas: ["Montar a esplanada", "Vidros", "Atender clientes", "Lixo da noite"] }, // Guilherme
+
+  { tarefas: ["Limpar mesas e cadeiras da esplanada", "Repor bebidas", "Apoio", "Montra da noite"] }, // João
+
+  { tarefas: ["Montar sala de vidro", "Ver reservas", "Montra da manhã", "Organizar turnos e tarefas"] }, // Márcia
+
+  { tarefas: ["Casas de banho", "Dobrar guardanapos", "Apoio", "Talheres a tarde"] }, // Niki
+
+  { tarefas: ["Organizar o Bar", "Lavar copos", "Fornecer bebidas", "Apoiar a sala de dentro, se possível"] }, // Patrícia
+
+  { tarefas: ["Organizar a sala de dentro", "Lavar o chão", "Atender os clientes", "Galheteiros a cada 3 dias"] } // Valéria
+];
+
 export default function Tarefas() {
   const [editMode, setEditMode] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [cards, setCards] = useState([]);
 
-  // ============================
-  // 1. Carregar tarefas do Firebase
-  // ============================
-  useEffect(() => {
-    async function carregar() {
-      const ref = doc(db, "tarefas", "empregados");
-      const snap = await getDoc(ref);
+  // Estado inicial vem 100% do VS Code
+  const [cards, setCards] = useState(cardsInicial);
 
-      if (snap.exists()) {
-        setCards(snap.data().cards);
-      } else {
-        // Se não existir, cria estrutura inicial
-        const inicial = empregados.map(() => ({
-          tarefas: [
-            "Arrumar sala de dentro",
-            "Talheres",
-            "Guardanapos",
-            "Casas de banho"
-          ]
-        }));
-        setCards(inicial);
-        await updateDoc(ref, { cards: inicial });
-      }
-    }
-
-    carregar();
-  }, []);
-
-  // ============================
-  // 2. Guardar no Firebase
-  // ============================
+  // Guardar no Firebase (opcional)
   const guardarFirebase = async (novo) => {
     const ref = doc(db, "tarefas", "empregados");
     await updateDoc(ref, { cards: novo });
@@ -61,6 +58,8 @@ export default function Tarefas() {
     const copia = [...cards];
     copia[cardIndex].tarefas[tarefaIndex] = novoTexto;
     setCards(copia);
+
+    // Se quiseres guardar no Firebase, deixa esta linha:
     guardarFirebase(copia);
   };
 

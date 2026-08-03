@@ -31,7 +31,7 @@ function Header() {
         <ul className="hidden md:flex items-center gap-6 text-[15px] font-medium text-white">
           <li><a href="#Empregados" className="hover:text-gray-400 transition">Empregados</a></li>
           <li><a href="#Tarefas" className="hover:text-gray-400 transition">Tarefas</a></li>
-          <li><a href="#Salas" className="hover:text-gray-400 transition">Salas</a></li>
+       
           <li><a href="#Regras" className="hover:text-gray-400 transition">Regras da Casa</a></li>
         </ul>
       </nav>
@@ -48,7 +48,6 @@ function Header() {
 
           <a href="#Empregados" onClick={() => setOpen(false)}>Empregados</a>
           <a href="#Tarefas" onClick={() => setOpen(false)}>Tarefas</a>
-          <a href="#Salas" onClick={() => setOpen(false)}>Salas</a>
           <a href="#Regras" onClick={() => setOpen(false)}>Regras da Casa</a>
         </div>
       )}
