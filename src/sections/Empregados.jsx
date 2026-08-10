@@ -25,15 +25,25 @@ export default function Empregados() {
         <p className="mt-2 text-lg text-gray-400">Horários e turnos da equipa</p>
       </div>
 
-      {/* Tabela */}
-      <div className="w-full overflow-x-auto flex justify-center">
-        <table className="w-full max-w-3xl mx-auto text-white border border-gray-700 rounded-lg overflow-hidden shadow-lg">
+      {/* Tabela otimizada */}
+      <div className="w-full overflow-x-auto">
+        <table className="
+          w-full 
+          max-w-3xl 
+          mx-auto 
+          text-white 
+          border border-gray-700 
+          rounded-lg 
+          overflow-hidden 
+          shadow-lg
+          text-sm md:text-base
+        ">
           <thead className="bg-gray-800">
             <tr>
-              <th scope="col" className="p-3 text-left">Nome</th>
-              <th scope="col" className="p-3 text-left">Diurno</th>
-              <th scope="col" className="p-3 text-left">Noturno</th>
-              <th scope="col" className="p-3 text-left">Direto</th>
+              <th className="p-2 md:p-3 text-left whitespace-nowrap">Nome</th>
+              <th className="p-2 md:p-3 text-left whitespace-nowrap">Diurno</th>
+              <th className="p-2 md:p-3 text-left whitespace-nowrap">Noturno</th>
+              <th className="p-2 md:p-3 text-left whitespace-nowrap">Direto</th>
             </tr>
           </thead>
 
@@ -44,12 +54,12 @@ export default function Empregados() {
                 className="text-black"
                 style={{ backgroundColor: emp.cor }}
               >
-                <td className="p-3 font-semibold">{emp.nome}</td>
-                <td className="p-3">{emp.diurno}</td>
-                <td className="p-3">{emp.noturno}</td>
-                <td className="p-3">
+                <td className="p-2 md:p-3 font-semibold whitespace-nowrap">{emp.nome}</td>
+                <td className="p-2 md:p-3 whitespace-nowrap">{emp.diurno}</td>
+                <td className="p-2 md:p-3 whitespace-nowrap">{emp.noturno}</td>
+                <td className="p-2 md:p-3 whitespace-nowrap">
                   {emp.direto ? (
-                    <span className="px-3 py-1 bg-black/40 text-white rounded-full">
+                    <span className="px-3 py-1 bg-black/40 text-white rounded-full text-xs md:text-sm">
                       Direto
                     </span>
                   ) : (
