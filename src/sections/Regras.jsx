@@ -44,7 +44,7 @@ export default function Regras() {
 
             <li>• Nunca discutir à frente dos clientes.</li>
 
-            <li>• Manter uma comunicação clara entre a sala, o mbar e a  cozinha.</li>
+            <li>• Manter uma comunicação clara entre a sala, o bar e a  cozinha.</li>
 
           </ul>
         </div>
