@@ -50,6 +50,7 @@ function Header() {
 
           <a href="#Empregados" onClick={() => setOpen(false)}>Empregados</a>
           <a href="#Tarefas" onClick={() => setOpen(false)}>Tarefas</a>
+          <a href="FAQ" onClick={() => setOpen(false)}> Formação </a>
           <a href="#Regras" onClick={() => setOpen(false)}>Regras da Casa</a>
         </div>
       )}
