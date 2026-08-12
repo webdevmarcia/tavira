@@ -12,7 +12,7 @@ const empregados = [
   { nome: "Gabriel", cor: "#808080" },   
   { nome: "Guilherme", cor: "#DCDCDC" },
   { nome: "João", cor: "#A52A2A" },
-  { nome: "Luis", cor: "#87CEFA" },
+  { nome: "Ludmila", cor: "#87CEFA" },
   { nome: "Márcia", cor: "#DA70D6" },
   { nome: "Niki", cor: "#14b8a6" },
   { nome: "Patrícia", cor: "#FA8072" },
