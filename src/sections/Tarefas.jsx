@@ -57,7 +57,7 @@ export default function Tarefas() {
   // Estado inicial vem 100% do VS Code
   const [cards, setCards] = useState(cardsInicial);
 
-  // Guardar no Firebase (opcional)
+  // Guardar no Firebase 
   const guardarFirebase = async (novo) => {
     const ref = doc(db, "tarefas", "empregados");
     await updateDoc(ref, { cards: novo });
@@ -68,7 +68,7 @@ export default function Tarefas() {
     copia[cardIndex].tarefas[tarefaIndex] = novoTexto;
     setCards(copia);
 
-    // Se quiseres guardar no Firebase, deixa esta linha:
+    // 
     guardarFirebase(copia);
   };
 

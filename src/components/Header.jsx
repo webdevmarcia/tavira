@@ -31,6 +31,8 @@ function Header() {
         <ul className="hidden md:flex items-center gap-6 text-[15px] font-medium text-white">
           <li><a href="#Empregados" className="hover:text-gray-400 transition">Empregados</a></li>
           <li><a href="#Tarefas" className="hover:text-gray-400 transition">Tarefas</a></li>
+
+          <li><a href="#FAQ" className="hover:text-gray-400 transition"> Formação </a></li>
        
           <li><a href="#Regras" className="hover:text-gray-400 transition">Regras da Casa</a></li>
         </ul>
