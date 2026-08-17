@@ -1,3 +1,5 @@
+import Gate from "./sections/Gate"; 
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -10,30 +12,30 @@ import "./index.css";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className="min-h-screen text-[var(--on-surface)] bg-[var(--surface)]">
-        <Header />
+    <Gate>
+      <BrowserRouter>
+        <div className="min-h-screen text-[var(--on-surface)] bg-[var(--surface)]">
+          <Header />
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-               
-                {/* CONTEÚDO PRINCIPAL */}
-                <main className="overflow-x-hidden max-w-7xl mx-auto px-6 py-20 space-y-32">
-                  <Empregados />
-                  <Tarefas />
-                  <Formacao />
-                  <Regras />
-                </main>
-              </>
-            }
-          />
-        </Routes>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <main className="overflow-x-hidden max-w-7xl mx-auto px-6 py-20 space-y-32">
+                    <Empregados />
+                    <Tarefas />
+                    <Formacao />
+                    <Regras />
+                  </main>
+                </>
+              }
+            />
+          </Routes>
 
-        <Footer />
-      </div>
-    </BrowserRouter>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </Gate>
   );
 }
