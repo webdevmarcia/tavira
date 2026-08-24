@@ -23,7 +23,7 @@ const empregados = [
 const cardsInicial = [
   { tarefas: ["Montar sala de dentro", "Talheres de manhã", "Varrer o chão (manhã e noite)", "Atender os clientes"] }, // Álvaro
 
-  { tarefas: ["Varrer a esplanada (tarde e noite)", "Talheres (tarde e noite)", "Guardanapos (sexta a domingo)", "Apoio"] }, // Ana
+  { tarefas: ["Varrer a esplanada (manhã e tarde)", "Talheres (tarde e noite)", "Guardanapos (sexta a domingo)", "Apoio"] }, // Ana
 
   { tarefas: ["Organizar o balcão", "Preparar couvert", "Fornecer sobremesas", "Apoiar a sala de vidro, se possível"] }, // Carolina
 
