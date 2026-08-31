@@ -8,11 +8,11 @@ const empregados = [
   { nome: "Ana", cor: "#FFA500" },
   { nome: "Carolina", cor: "#facc15" },
   { nome: "Emanuel", cor: "#3b82f6" },
-  { nome: "Filipe", cor: "#DC143C" },
-  { nome: "Gabriel", cor: "#808080" },   
-  { nome: "Guilherme", cor: "#DCDCDC" },
+  { nome: "Filipe", cor: "#DC143C" },   
+  { nome: "Inês", cor: "#DCDCDC" },
   { nome: "Ludmila", cor: "#87CEFA" },
   { nome: "Márcia", cor: "#DA70D6" },
+  { nome: "Nicole", cor: "#14b8a6" },
   { nome: "Patrícia", cor: "#FA8072" },
   { nome: "Valéria", cor: "#a855f7" }
 ];
@@ -21,28 +21,27 @@ const empregados = [
 // 1. Tarefas — 4 por empregado
 // =======================================
 const cardsInicial = [
-  { tarefas: ["Montar sala de dentro", "Talheres de manhã", "Varrer o chão (manhã e noite)", "Atender os clientes"] }, // Álvaro
+  { tarefas: ["Montar sala de dentro", "Talheres de manhã", "Varrer o chão de manhã", "Atender os clientes"] }, // Álvaro
 
-  { tarefas: ["Varrer a esplanada (manhã e tarde)", "Talheres (tarde e noite)", "Guardanapos (sexta a domingo)", "Apoio"] }, // Ana
+  { tarefas: ["Lavar o chão de manhã", "Varrer o chão a tarde", "Lavar o chão a tarde ", "Atender os clientes"] }, // Ana
 
   { tarefas: ["Organizar o balcão", "Preparar couvert", "Fornecer sobremesas", "Apoiar a sala de vidro, se possível"] }, // Carolina
 
-  { tarefas: ["Repor bebidas a tarde", "Arrumar esplanada a noite", "Montra a  noite", "Barris lá dentro"] }, // Emanuel 
+  { tarefas: ["Lavar os caixotes (Quinta)", "Lixo a noite", "Atender os clientes", "Barris lá dentro"] }, // Emanuel 
 
-  { tarefas: [ "Barris lá fora", "Montar a esplanada", "Lixo a noite", "Atender clientes", ] }, // Filipe
+  { tarefas: [ "Montar a sala de vidro", "Repor as bebidas (tarde e noite)", "Ver a fossa (quarta ou quinta)", "Atender clientes", ] }, // Filipe
+ 
+  { tarefas: ["Dobrar guardanapos (manhã e tarde)", "Varrer a esplanada", "Limpar a montra de manhã", "Apoio" ] }, // Inês
 
-  { tarefas: ["Dobrar guardanapos", "Repor bebidas a noite", "Lavar os caixotes (quarta feira a tarde)", "Varrer o telhado (quinta de manhã)"] }, // Gabriel 
+  { tarefas: ["Limpar os aparadores (quarta e quinta)", "Limpar os frapés (terça)", "Organizar as salas a tarde", "Atender os clientes"] }, // Ludmila
 
-  { tarefas: ["Bebidas de manhã", "Atender clientes", "Lixo da noite", "Montra a noite" ] }, // Guilherme
+  { tarefas: ["Montar a esplanada", "Montra da noite", "Ver Reservas", "Repor bebidas de manhã"] }, // Márcia
 
-  { tarefas: ["Limpar os vidros", "Limpar a montra", "Casas de banho (manhã e 18h)", "Apoio"] }, // Ludmila
-
-  { tarefas: ["Montar sala de vidro", "Ver os galheteiros", "Ver Reservas", "Atender Clientes"] }, // Márcia
-
+  { tarefas: ["Limpar os vidros, ecrãs e por cima dos frigoríficos", "Limpar a casa de banho de manhã", "Fazer os talheres a tarde", "Apoio"] }, // Nicole
 
   { tarefas: ["Organizar o bar", "Lavar os copos", "Fornecer bebidas", "Apoiar a sala de dentro, se possível"] }, // Patrícia
 
-  { tarefas: ["Lavar o chão (manhã e tarde)", "Limpar os menus", "Arrumar esplanada a noite", "Atender clientes"] } // Valéria
+  { tarefas: ["Montar sala de vidro", "Limpar a garrafeira (quarta ou quinta)", "Limpar menus e galheteiros", "Atender clientes"] } // Valéria
 ];
 
 export default function Tarefas() {
@@ -83,7 +82,7 @@ export default function Tarefas() {
       <h1 className="text-black text-4xl font-bold mb-2">Tarefas de cada empregado</h1>
 
       <div className="inline-block px-4 py-1 bg-yellow-500 text-black font-semibold rounded-full mb-8">
-        25 a 30 de agosto
+        1 a 6 de setembro
       </div>
 
       {!editMode && (
