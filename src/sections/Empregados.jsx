@@ -1,15 +1,14 @@
 // Lista de empregados
 const empregados = [
   { nome: "Álvaro", cor: "#98FB98", diurno: "10:00 - 15:30", noturno: "18:15 - 23:00", direto: false },
-  { nome: "Ana", cor: "#FFA500", diurno: "11:00 - 15:45", noturno: "18:15 - 00:00", direto: false },
   { nome: "Carolina", cor: "#facc15", diurno: "10:00 - 15:45", noturno: "18:15 - 23:00", direto: false },
-  { nome: "Emanuel", cor: "#3b82f6", diurno: "—", noturno: "15:30 - fecho", direto: true },
-  { nome: "Filipe", cor: "#DC143C", diurno: "10:00 - 18:30", noturno: "19:00 - 23:00", direto: true },
-  { nome: "Inês", cor: "#DCDCDC", diurno: "10:00 - 15:45", noturno: "18:15 - 23:00", direto: false },
+  { nome: "Emanuel", cor: "#3b82f6", diurno: "—", noturno: "15:00 - fecho", direto: true },
+  { nome: "Inês", cor: "#DCDCDC", diurno: "10:00 - 19h", noturno: "—", direto: true },
   { nome: "Ludmila", cor: "#87CEFA", diurno: "11:30 - 21:30", noturno: "—", direto: true },
-  { nome: "Márcia", cor: "#DA70D6", diurno: "10:00 - 16:00", noturno: "18:15 - 23:30", direto: false },
-  { nome: "Nicole", cor: "#14b8a6", diurno: "10:30 - 16:30", noturno: "—", direto: false },
+  { nome: "Márcia", cor: "#DA70D6", diurno: "10:00 - fecho", noturno: "—", direto: false },
+  { nome: "Niki", cor: "#14b8a6", diurno: "10:30 - 16:30", noturno: "18:15 - fecho", direto: false },
   { nome: "Patrícia", cor: "#FA8072", diurno: "11:00 - 15:45", noturno: "18:15 - 00:00", direto: false },
+  { nome: "Sukélia", cor: "#FFA500", diurno: "—", noturno: "18:00 - 23:15", direto: false },
   { nome: "Valéria", cor: "#a855f7", diurno: "10:00 - 15:45", noturno: "18:15 - 23:00", direto: false },
 ];
 
