@@ -11,6 +11,7 @@ const empregados = [
   { nome: "Márcia", cor: "#DA70D6" },
   { nome: "Niki", cor: "#14b8a6" },
   { nome: "Patrícia", cor: "#FA8072" },
+  { nome: "Ricardo", cor: "#DC143C" },
   { nome: "Valéria", cor: "#a855f7" }
 ];
 
@@ -22,17 +23,19 @@ const cardsInicial = [
 
   { tarefas: ["Organizar o balcão", "Preparar couvert", "Fornecer sobremesas", "Apoiar a sala de vidro, se possível"] }, // Carolina
 
-  { tarefas: ["Barris lá dentro", "Varrer a esplanada", "Montar/desmontar a esplanada", "Reposição e montra a noite"] }, // Emanuel 
+  { tarefas: ["Barris e chapéus lá dentro", "Ver a fossa", "Lixo a noite", "Reposição a tarde"] }, // Emanuel 
 
-  { tarefas: ["Limpar a área da copa", "Lavar o chão a tarde", "Limpar a garrafeira (terça a tarde)", "Guardanapos"] }, // Ludmila
+  { tarefas: ["Montar a sala de vidro", "Lavar o chão de manhã", "Lavar o chão a tarde", "Limpar as cadeiras de bebé"] }, // Ludmila
 
-  { tarefas: ["Casas de banho", "Vidros e montra", "Lavar o chão", "Lixo a noite"] }, // Márcia
+  { tarefas: ["Barris e chapéus lá fora", "Varrer e montar a esplanada", "Ver as reservas", "Lixo a noite"] }, // Márcia
 
-  { tarefas: ["Montar sala de vidro", "Lavar os caixotes (quinta feira)", "Limpar menus, frapés e galheteiros", "Limpar as cadeiras de bebé"] }, // Niki
+  { tarefas: ["Casas de banho", "Vidros e montra de manhã", "Limpar a área da copa (quinta)", "Montra a noite"] }, // Niki
 
   { tarefas: ["Organizar o bar", "Lavar os copos", "Fornecer bebidas", "Apoiar a sala de dentro, se possível"] }, // Patrícia
 
-  { tarefas: ["Galheteiros", "Limpar os aparadores (terça e sexta)", "Limpar a área da copa (quarta)", "Lixo a noite"] } // Valéria
+  { tarefas: ["Varrer o telhado (quarta de manhã)", "Lavar os caixotes de lixo (quinta)", "Reposição de manhã", "Lixo a noite"] }, // Ricardo
+
+  { tarefas: ["Limpar menus, frapés e galheteiros", "Limpar os aparadores (terça e sexta)", "Limpar a garrafeira", "Reposição a noite "] } // Valéria
 ];
 
 export default function Tarefas() {
@@ -73,7 +76,7 @@ export default function Tarefas() {
       <h1 className="text-black text-4xl font-bold mb-2">Tarefas de cada empregado</h1>
 
       <div className="inline-block px-4 py-1 bg-yellow-500 text-black font-semibold rounded-full mb-8">
-        15 a 20 de setembro
+        22 a 27 de setembro
       </div>
 
       {!editMode && (
