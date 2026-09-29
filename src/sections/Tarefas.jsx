@@ -23,19 +23,19 @@ const cardsInicial = [
 
   { tarefas: ["Organizar o balcão", "Preparar couvert", "Fornecer sobremesas", "Apoiar a sala de vidro, se possível"] }, // Carolina
 
-  { tarefas: ["Barris e chapéus lá dentro", "Ver a fossa", "Lixo a noite", "Reposição a tarde"] }, // Emanuel 
+  { tarefas: ["Barris e chapéus lá dentro", "Lavar os caixotes", "Lixo a noite", "Reposição a tarde"] }, // Emanuel 
 
-  { tarefas: ["Montar a sala de vidro", "Lavar o chão de manhã", "Lavar o chão a tarde", "Limpar as cadeiras de bebé"] }, // Ludmila
+  { tarefas: ["Casas de banho ", "Vidros e montra de manhã", "Lavar o chão a tarde", "Limpar a casinha (quarta ou quinta)"] }, // Ludmila
 
-  { tarefas: ["Barris e chapéus lá fora", "Varrer e montar a esplanada", "Ver as reservas", "Lixo a noite"] }, // Márcia
+  { tarefas: ["Barris e chapéus lá fora", "Sala de vidro", "Lavar o chão de manhã", "Montra a noite"] }, // Márcia
 
-  { tarefas: ["Casas de banho", "Vidros e montra de manhã", "Limpar a área da copa (quinta)", "Montra a noite"] }, // Niki
+  { tarefas: ["Varrer e montar a esplanada", "Limpar as cadeiras de bebé (tarde)", "Limpar os aparadores (quarta e quinta)", "Limpar área da copa"] }, // Niki
 
   { tarefas: ["Organizar o bar", "Lavar os copos", "Fornecer bebidas", "Apoiar a sala de dentro, se possível"] }, // Patrícia
 
-  { tarefas: ["Varrer o telhado (quarta de manhã)", "Lavar os caixotes de lixo (quinta)", "Reposição de manhã", "Lixo a noite"] }, // Ricardo
+  { tarefas: ["Varrer o telhado (quarta de manhã)", "Apoio a montar as salas", "Reposição de manhã", "Lixo a noite"] }, // Ricardo
 
-  { tarefas: ["Limpar menus, frapés e galheteiros", "Limpar os aparadores (terça e sexta)", "Limpar a garrafeira", "Reposição a noite "] } // Valéria
+  { tarefas: ["Limpar menus, frapés e galheteiros", "Guardanapos para o dia seguinte", "Limpar a garrafeira", "Reposição a noite "] } // Valéria
 ];
 
 export default function Tarefas() {
@@ -76,7 +76,7 @@ export default function Tarefas() {
       <h1 className="text-black text-4xl font-bold mb-2">Tarefas de cada empregado</h1>
 
       <div className="inline-block px-4 py-1 bg-yellow-500 text-black font-semibold rounded-full mb-8">
-        22 a 27 de setembro
+        29 de setembro a 4 de outubro
       </div>
 
       {!editMode && (
