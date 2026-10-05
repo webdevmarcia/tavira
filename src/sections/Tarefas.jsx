@@ -25,11 +25,11 @@ const cardsInicial = [
 
   { tarefas: ["Barris e chapéus lá dentro", "Lavar os caixotes", "Lixo a noite", "Reposição a tarde"] }, // Emanuel 
 
-  { tarefas: ["Casas de banho ", "Vidros e montra de manhã", "Lavar o chão a tarde", "Limpar a casinha (quarta ou quinta)"] }, // Ludmila
+  { tarefas: ["Varrer e montar a esplanada", "Limpar as cadeiras de bebé", "Lavar o chão a tarde", "Limpar os aparadores (quarta ou quinta)"] }, // Ludmila
 
-  { tarefas: ["Barris e chapéus lá fora", "Sala de vidro", "Lavar o chão de manhã", "Montra a noite"] }, // Márcia
+  { tarefas: ["Barris e chapéus lá fora", "Casas de banho", "Vidros e montra de manhã", "Montra a noite"] }, // Márcia
 
-  { tarefas: ["Varrer e montar a esplanada", "Limpar as cadeiras de bebé (tarde)", "Limpar os aparadores (quarta e quinta)", "Limpar área da copa"] }, // Niki
+  { tarefas: ["Montar a sala de vidro", "Lavar o chão de manhã", "Limpar a copa (quarta e quinta)", "Guardanapos"] }, // Niki
 
   { tarefas: ["Organizar o bar", "Lavar os copos", "Fornecer bebidas", "Apoiar a sala de dentro, se possível"] }, // Patrícia
 
