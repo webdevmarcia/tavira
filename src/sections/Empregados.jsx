@@ -1,73 +1,55 @@
-// Lista de empregados
-const empregados = [
-  { nome: "Álvaro", cor: "#98FB98", diurno: "10:00 - 15:30", noturno: "18:15 - 23:00", direto: false },
-  { nome: "Carolina", cor: "#facc15", diurno: "10:00 - 15:45", noturno: "18:15 - 23:00", direto: false },
-
-  { nome: "Ludmila", cor: "#87CEFA", diurno: "10:30 - 20:30", noturno: "—", direto: true },
-  { nome: "Márcia", cor: "#DA70D6", diurno: "10:00 - fecho", noturno: "—", direto: true },
-  { nome: "Niki", cor: "#14b8a6", diurno: "10:30 - 16:30", noturno: "18:15 - 23:30", direto: false },
-  { nome: "Patrícia", cor: "#FA8072", diurno: "11:00 - 15:45", noturno: "18:15 - 00:00", direto: false },
-  { nome: "Ricardo", cor: "#DC143C", diurno: "10:30 - 15:45", noturno: "18:15 - 00:00", direto: false },
-  { nome: "Valéria", cor: "#a855f7", diurno: "10:30 - 15:30", noturno: "20:30 - fecho", direto: false },
-];
+import { empregados } from "../data/equipa";
+import { useEu } from "../lib/eu";
+import { useAgora } from "../lib/storage";
+import { minutosAgora, turnoAtual } from "../lib/turnos";
+import { Avatar, Cartao, TituloPagina } from "../components/ui";
+import Icone from "../components/Icones";
 
 export default function Empregados() {
+  const { eu } = useEu();
+  const min = minutosAgora(useAgora());
+  const deServico = empregados.filter((e) => turnoAtual(e, min)).length;
+
   return (
-    <section id="Empregados" className="max-w-6xl mx-auto px-4 py-10">
+    <section>
+      <TituloPagina titulo="Equipa" subtitulo="Horários e turnos da equipa">
+        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 text-sm font-medium">
+          <span className="w-2 h-2 rounded-full bg-emerald-500" />
+          {deServico} de serviço agora
+        </span>
+      </TituloPagina>
 
-      {/* Título */}
-      <div className="text-center mb-10">
-        <h1 className="text-black text-4xl font-bold mb-2">Empregados</h1>
-        <p className="mt-2 text-lg text-gray-400">Horários e turnos da equipa</p>
-      </div>
-
-      {/* Tabela otimizada */}
-      <div className="w-full overflow-x-auto">
-        <table className="
-          w-full 
-          max-w-3xl 
-          mx-auto 
-          text-white 
-          border border-gray-700 
-          rounded-lg 
-          overflow-hidden 
-          shadow-lg
-          text-sm md:text-base
-        ">
-          <thead className="bg-gray-800">
-            <tr>
-              <th className="p-2 md:p-3 text-left whitespace-nowrap">Nome</th>
-              <th className="p-2 md:p-3 text-left whitespace-nowrap">Diurno</th>
-              <th className="p-2 md:p-3 text-left whitespace-nowrap">Noturno</th>
-              <th className="p-2 md:p-3 text-left whitespace-nowrap">Direto</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {empregados.map((emp) => (
-              <tr
-                key={emp.nome}
-                className="text-black"
-                style={{ backgroundColor: emp.cor }}
-              >
-                <td className="p-2 md:p-3 font-semibold whitespace-nowrap">{emp.nome}</td>
-                <td className="p-2 md:p-3 whitespace-nowrap">{emp.diurno}</td>
-                <td className="p-2 md:p-3 whitespace-nowrap">{emp.noturno}</td>
-                <td className="p-2 md:p-3 whitespace-nowrap">
-                  {emp.direto ? (
-                    <span className="px-3 py-1 bg-black/40 text-white rounded-full text-xs md:text-sm">
-                      Direto
+      <ul className="grid sm:grid-cols-2 gap-3">
+        {empregados.map((emp) => {
+          const atual = turnoAtual(emp, min);
+          return (
+            <li key={emp.nome}>
+              <Cartao className={`p-4 flex items-center gap-4 ${eu?.nome === emp.nome ? "ring-2 ring-amber-300" : ""}`}>
+                <Avatar emp={emp} tamanho="w-12 h-12 text-lg" />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-semibold text-lg">{emp.nome}</span>
+                    {emp.direto && (
+                      <span className="px-2 py-0.5 rounded-full bg-neutral-950 text-white text-xs font-medium">Direto</span>
+                    )}
+                    {atual && (
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-medium">Agora</span>
+                    )}
+                  </div>
+                  <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-neutral-600 tabular-nums">
+                    <span className={`inline-flex items-center gap-1 ${atual === "diurno" ? "text-neutral-950 font-medium" : ""}`}>
+                      <Icone nome="sol" className="w-4 h-4 text-amber-500" /> {emp.diurno}
                     </span>
-                  ) : (
-                    "—"
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
+                    <span className={`inline-flex items-center gap-1 ${atual === "noturno" ? "text-neutral-950 font-medium" : ""}`}>
+                      <Icone nome="lua" className="w-4 h-4 text-indigo-500" /> {emp.noturno}
+                    </span>
+                  </div>
+                </div>
+              </Cartao>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

@@ -1,58 +1,69 @@
-export default function Formacao () {
-  const faq = [
-    {
-      pergunta: "Peixes assados a dose",
-      resposta:
-        "Os peixes assados a dose são: sardinhas (7 unidades), salmão, robalo (pequeno), massacotes (3 ou 4 unidades, dependendo do tamanho), peixe-espada, besugo, dourada, carapau (3 ou 4 dependendo do tamanho), atum. Todos esses peixes trazem de acompanhamento batata cozida e migas. Não fazemos trocas nem substituições, se a pessoa quiser salada ou legumes, paga esses itens a parte. Temos sempre que levar esses peixes da montra para a cozinha."
-    },
-    {
-      pergunta: "Peixes ao peso",
-      resposta:
-        "Temos sempre que pesar esses peixes: linguado, robalo (os grandes), pregado, salmonete, corvina, garoupa, cherne, sargo, dourada (as grandes), cantaril, imperador, ovas e lulas. Todos esses itens trazem batatas cozidas e migas, excepto as ovas e lulas, que só trazem um bocadinho de batata, coentros e cebola. Temos sempre que levar esses itens a cozinha."
-    },
-    {
-      pergunta: "Tachos",
-      resposta:
-        "Todos os tachos trazem camarão, os ensopados trazem sempre pão frito. A massa/arroz de sapateira traz a sapateira partida. A feijoada de gambas traz arroz, "
-    },
-    {
-      pergunta: "Pratos especiais",
-      resposta:
-        "Caril de camarão traz arroz, Bacalhau a Tavira é frito e traz batata doce, o Bacalhau Assado é assado e traz pimentos, o atum de cebolada traz batata frita.  "
-    },
-    {
-      pergunta: "Carnes",
-      resposta:
-        "Bife da Vazia, plumas de porco e t-bone são grelhados, trazem batata frita e salada. O prego do lombo temos sempre que perguntar ao cliente se é no pão ou no prato, e depois escrever nos comentários se é no pão ou no prato. Não há bitoque de vaca, só de porco. O bitoque traz a carne, ovo estrelado, arroz e batata frita. A picanha traz a carne, fruta, salada, arroz, feijão e batata frita. Os bifinhos de frango trazem batata frita e arroz. O bife a casa traz molho de natas, batata frita, salada e camarão. Temos sempre que perguntar ao cliente o ponto da carne (médio, mal ou bem passado) e colocar nos comentários. "
-    },
-    {
-      pergunta: "Mariscada",
-      resposta:
-        "A mariscada temos a quente e a fria. A fria traz uma sapateira recheada, camarões nc (uns 7 ou 8), e ostras (2). A quente traz camarão, ameijoas e ligueirão. Temos que levar a cozinha uma sapateira pequena, 6 ou 7 camarões nc e 2 ostras. Se pedirem ligueirão, temos que perguntar se é natural ou a Bulhao Pato e escrever nos comentários. Se pedirem sapateira, temos que perguntar se é natural ou recheada e escrevemos nos comentários."
-    }
-  ];
+import { useState } from "react";
+import { faq } from "../data/conteudo";
+import { Cartao, TituloPagina } from "../components/ui";
+import Icone from "../components/Icones";
+
+// Ignora maiúsculas e acentos ("bulhao" encontra "Bulhão")
+const normalizar = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+function Destacar({ texto, termo }) {
+  if (!termo) return texto;
+  // normalizar letra a letra para as posições coincidirem com o texto original
+  const alvo = texto.split("").map(normalizar).join("");
+  const partes = [];
+  let i = 0;
+  let pos;
+  while ((pos = alvo.indexOf(termo, i)) !== -1) {
+    partes.push(texto.slice(i, pos));
+    partes.push(<mark key={pos} className="bg-amber-200 rounded px-0.5">{texto.slice(pos, pos + termo.length)}</mark>);
+    i = pos + termo.length;
+  }
+  partes.push(texto.slice(i));
+  return partes;
+}
+
+export default function Formacao() {
+  const [pesquisa, setPesquisa] = useState("");
+  const termo = normalizar(pesquisa.trim());
+
+  const resultados = faq.filter(
+    (item) => !termo || normalizar(item.pergunta).includes(termo) || normalizar(item.resposta).includes(termo)
+  );
 
   return (
-    <section id="FAQ" className="max-w-4xl mx-auto px-4 py-12">
-      <div className="text-center mb-10">
-        <h2 className="text-black text-3xl md:text-4xl font-bold">FAQ — Comidas & Pratos</h2>
-        <p className="mt-2 text-lg text-gray-500">
-          Perguntas frequentes sobre os pratos do restaurante
-        </p>
-      </div>
+    <section>
+      <TituloPagina titulo="Formação" subtitulo="Comidas, pratos e o que levar à cozinha" />
 
-      <div className="space-y-4">
-        {faq.map((item, index) => (
-          <details
-            key={index}
-            className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm"
-          >
-            <summary className="cursor-pointer font-semibold text-lg text-black">
-              {item.pergunta}
-            </summary>
-            <p className="mt-2 text-gray-700">{item.resposta}</p>
-          </details>
+      <label className="relative block mb-5">
+        <span className="sr-only">Pesquisar</span>
+        <Icone nome="pesquisa" className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
+        <input
+          type="search"
+          placeholder="Pesquisar um prato, peixe, acompanhamento…"
+          value={pesquisa}
+          onChange={(e) => setPesquisa(e.target.value)}
+          className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-neutral-200 focus:outline-none focus:border-neutral-950"
+        />
+      </label>
+
+      <div className="space-y-3">
+        {resultados.map((item) => (
+          <Cartao key={item.pergunta}>
+            <details className="group" open={Boolean(termo)} key={termo ? "aberto" : "fechado"}>
+              <summary className="flex items-center justify-between gap-3 cursor-pointer list-none p-5 font-semibold text-lg">
+                <Destacar texto={item.pergunta} termo={termo} />
+                <Icone nome="seta" className="w-5 h-5 text-neutral-400 transition-transform group-open:rotate-90" />
+              </summary>
+              <p className="px-5 pb-5 -mt-1 text-neutral-700 leading-relaxed">
+                <Destacar texto={item.resposta} termo={termo} />
+              </p>
+            </details>
+          </Cartao>
         ))}
+
+        {resultados.length === 0 && (
+          <p className="text-center text-neutral-500 py-10">Nada encontrado para "{pesquisa}".</p>
+        )}
       </div>
     </section>
   );

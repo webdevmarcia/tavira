@@ -1,41 +1,49 @@
-import Gate from "./sections/Gate"; 
+import { useEffect } from "react";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Header from "./components/Header";
-import Empregados from "./sections/Empregados";
-import Formacao from "./sections/Formacao";
-import Tarefas from "./sections/Tarefas";
-import Regras from "./sections/Regras";
+import Gate from "./sections/Gate";
+import Header, { BarraInferior } from "./components/Header";
 import Footer from "./components/Footer";
+import Inicio from "./sections/Inicio";
+import Empregados from "./sections/Empregados";
+import Tarefas from "./sections/Tarefas";
+import Formacao from "./sections/Formacao";
+import Regras from "./sections/Regras";
+import { EuProvider } from "./lib/eu";
 import "./index.css";
+
+// Conteúdo da página atual (volta ao topo e anima ao mudar de página)
+function Conteudo() {
+  const { pathname } = useLocation();
+  useEffect(() => window.scrollTo(0, 0), [pathname]);
+
+  return (
+    <main className="max-w-5xl mx-auto px-4 pt-6 md:pt-10 pb-28 md:pb-10 animate-fadeIn" key={pathname}>
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/equipa" element={<Empregados />} />
+        <Route path="/tarefas" element={<Tarefas />} />
+        <Route path="/formacao" element={<Formacao />} />
+        <Route path="/regras" element={<Regras />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </main>
+  );
+}
 
 export default function App() {
   return (
     <Gate>
-      <BrowserRouter>
-        <div className="min-h-screen text-[var(--on-surface)] bg-[var(--surface)]">
-          <Header />
-
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <main className="overflow-x-hidden max-w-7xl mx-auto px-6 py-20 space-y-32">
-                    <Empregados />
-                    <Tarefas />
-                    <Formacao />
-                    <Regras />
-                  </main>
-                </>
-              }
-            />
-          </Routes>
-
-          <Footer />
-        </div>
-      </BrowserRouter>
+      <EuProvider>
+        <BrowserRouter>
+          <div className="min-h-dvh bg-neutral-50 text-neutral-950">
+            <Header />
+            <Conteudo />
+            <Footer />
+            <BarraInferior />
+          </div>
+        </BrowserRouter>
+      </EuProvider>
     </Gate>
   );
 }
