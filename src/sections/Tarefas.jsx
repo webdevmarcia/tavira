@@ -6,7 +6,6 @@ import { doc, updateDoc } from "firebase/firestore";
 const empregados = [
   { nome: "Álvaro", cor: "#98FB98" },
   { nome: "Carolina", cor: "#facc15" },
-  { nome: "Emanuel", cor: "#3b82f6" },
   { nome: "Ludmila", cor: "#87CEFA" },
   { nome: "Márcia", cor: "#DA70D6" },
   { nome: "Niki", cor: "#14b8a6" },
@@ -21,21 +20,19 @@ const empregados = [
 const cardsInicial = [
   { tarefas: ["Montar a sala de dentro", "Talheres de manhã", "Varrer o chão de manhã", "Guardanapos de manhã"] }, // Álvaro
 
-  { tarefas: ["Organizar o balcão", "Preparar couvert", "Fornecer sobremesas", "Apoiar a sala de vidro, se possível"] }, // Carolina
+  { tarefas: ["Organizar o balcão", "Preparar couvert", "Fornecer sobremesas", "Apoiar a sala de vidro, se possível"] }, // Carolina 
 
-  { tarefas: ["Barris e chapéus lá dentro", "Lavar os caixotes", "Lixo a noite", "Reposição a tarde"] }, // Emanuel 
+  { tarefas: ["Lavar o chão", "Limpar a área da copa", "Esplanada", "Limpar os menus, frapés e galheteiros"] }, // Ludmila
 
-  { tarefas: ["Varrer e montar a esplanada", "Limpar as cadeiras de bebé", "Lavar o chão a tarde", "Limpar os aparadores (quarta ou quinta)"] }, // Ludmila
+  { tarefas: ["Barris lá dentro/fora", "Ver reservas", "Lixo a noite", "Montra a noite"] }, // Márcia
 
-  { tarefas: ["Barris e chapéus lá fora", "Casas de banho", "Vidros e montra de manhã", "Montra a noite"] }, // Márcia
-
-  { tarefas: ["Montar a sala de vidro", "Lavar o chão de manhã", "Limpar a copa (quarta e quinta)", "Guardanapos"] }, // Niki
+  { tarefas: ["Vidros e montra de manhã", "Casas de banho", "Limpar os aparadores (quarta/quinta)", "Sala de vidro"] }, // Niki
 
   { tarefas: ["Organizar o bar", "Lavar os copos", "Fornecer bebidas", "Apoiar a sala de dentro, se possível"] }, // Patrícia
 
-  { tarefas: ["Varrer o telhado (quarta de manhã)", "Apoio a montar as salas", "Reposição de manhã", "Lixo a noite"] }, // Ricardo
+  { tarefas: ["Lavar os caixotes (quinta)", "Apoio a montar as salas", "Reposição de manhã", "Lixo a noite"] }, // Ricardo
 
-  { tarefas: ["Limpar menus, frapés e galheteiros", "Guardanapos para o dia seguinte", "Limpar a garrafeira", "Reposição a noite "] } // Valéria
+  { tarefas: ["Limpar as cadeiras de bebé", "Guardanapos", "Limpar a garrafeira", "Reposição a noite "] } // Valéria
 ];
 
 export default function Tarefas() {

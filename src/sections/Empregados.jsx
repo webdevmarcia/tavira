@@ -2,7 +2,7 @@
 const empregados = [
   { nome: "Álvaro", cor: "#98FB98", diurno: "10:00 - 15:30", noturno: "18:15 - 23:00", direto: false },
   { nome: "Carolina", cor: "#facc15", diurno: "10:00 - 15:45", noturno: "18:15 - 23:00", direto: false },
-  { nome: "Emanuel", cor: "#3b82f6", diurno: "—", noturno: "15:00 - fecho", direto: true },
+
   { nome: "Ludmila", cor: "#87CEFA", diurno: "10:30 - 20:30", noturno: "—", direto: true },
   { nome: "Márcia", cor: "#DA70D6", diurno: "10:00 - fecho", noturno: "—", direto: true },
   { nome: "Niki", cor: "#14b8a6", diurno: "10:30 - 16:30", noturno: "18:15 - 23:30", direto: false },
