@@ -2,9 +2,10 @@
 function paraMinutos(texto, fim = false) {
   const t = texto.trim().toLowerCase();
   if (t === "fecho") return 24 * 60;
-  const [h, m] = t.split(":").map(Number);
-  if (Number.isNaN(h)) return null;
-  const minutos = h * 60 + (m || 0);
+  // Só aceita "10" ou "10:30" — texto vazio (ex.: "-" em vez de "—") não conta como 00:00
+  const hora = t.match(/^(\d{1,2})(?::(\d{2}))?$/);
+  if (!hora) return null;
+  const minutos = Number(hora[1]) * 60 + Number(hora[2] || 0);
   return fim && minutos === 0 ? 24 * 60 : minutos;
 }
 
