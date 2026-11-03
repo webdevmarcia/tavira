@@ -14,8 +14,13 @@ function listasIniciais() {
 
 // Só aceita edições do período atual — quando o período muda no código, as listas novas mandam
 function aplicar(guardado) {
-  if (!guardado || guardado.periodo !== periodoTarefas) return listasIniciais();
-  return { ...listasIniciais(), ...guardado.listas };
+  const iniciais = listasIniciais();
+  if (!guardado || guardado.periodo !== periodoTarefas || !guardado.listas) return iniciais;
+  // Ignorar entradas estragadas (ex.: dados antigos) — cada lista tem de ser um array de textos
+  const validas = Object.entries(guardado.listas).filter(
+    ([nome, lista]) => nome in iniciais && Array.isArray(lista)
+  );
+  return { ...iniciais, ...Object.fromEntries(validas.map(([n, l]) => [n, l.map((t) => String(t ?? ""))])) };
 }
 
 // Listas de tarefas (com edições guardadas no dispositivo e, se configurado, no Firebase)

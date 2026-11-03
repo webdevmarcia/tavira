@@ -3,7 +3,7 @@
 // - Ficheiros estáticos (JS/CSS/imagens com hash): cache primeiro
 // - Google Fonts: cache e atualiza em segundo plano
 
-const CACHE = "otavira-v1";
+const CACHE = "otavira-v2";
 const PRECACHE = [
   "/",
   "/index.html",

@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-route
 import Gate from "./sections/Gate";
 import Header, { BarraInferior } from "./components/Header";
 import Footer from "./components/Footer";
+import ErroApp from "./components/ErroApp";
 import Inicio from "./sections/Inicio";
 import Empregados from "./sections/Empregados";
 import Tarefas from "./sections/Tarefas";
@@ -15,7 +16,11 @@ import "./index.css";
 // Conteúdo da página atual (volta ao topo e anima ao mudar de página)
 function Conteudo() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  // Chaves obrigatórias: nos browsers recentes scrollTo devolve uma Promise,
+  // e o React rebentava ao tentar usá-la como função de limpeza (ecrã preto)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
 
   return (
     <main className="max-w-5xl mx-auto px-4 pt-6 md:pt-10 pb-28 md:pb-10 animate-fadeIn" key={pathname}>
@@ -33,17 +38,19 @@ function Conteudo() {
 
 export default function App() {
   return (
-    <Gate>
-      <EuProvider>
-        <BrowserRouter>
-          <div className="min-h-dvh bg-neutral-50 text-neutral-950">
-            <Header />
-            <Conteudo />
-            <Footer />
-            <BarraInferior />
-          </div>
-        </BrowserRouter>
-      </EuProvider>
-    </Gate>
+    <ErroApp>
+      <Gate>
+        <EuProvider>
+          <BrowserRouter>
+            <div className="min-h-dvh bg-neutral-50 text-neutral-950">
+              <Header />
+              <Conteudo />
+              <Footer />
+              <BarraInferior />
+            </div>
+          </BrowserRouter>
+        </EuProvider>
+      </Gate>
+    </ErroApp>
   );
 }
