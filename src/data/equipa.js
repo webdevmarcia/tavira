@@ -17,7 +17,7 @@ export const empregados = [
   },
   {
     nome: "João", cor: "#DC143C", diurno: "10:00 - 15:45", noturno: "—", direto: false,
-    tarefas: ["Lavar os caixotes (quinta)", "Apoio a montar as salas", "Reposição de manhã", "Lixo a noite"],
+    tarefas: ["Lavar os caixotes (quinta)", "Apoio a montar as salas", "Reposição de manhã", "Barris lá fora"],
   },
   {
     nome: "Ludmila", cor: "#87CEFA", diurno: "10:30 - 20:30", noturno: "—", direto: true,
@@ -25,7 +25,7 @@ export const empregados = [
   },
   {
     nome: "Márcia", cor: "#DA70D6", diurno: "10:00 - fecho", noturno: "—", direto: true,
-    tarefas: ["Barris lá dentro/fora", "Ver reservas", "Lixo a noite", "Montra a noite"],
+    tarefas: ["Barris lá dentro", "Ver reservas", "Lixo a noite", "Montra a noite"],
   },
   {
     nome: "Niki", cor: "#14b8a6", diurno: "10:30 - 16:30", noturno: "18:15 - 23:30", direto: false,
