@@ -4,7 +4,7 @@
 // =======================================
 
 // Período das tarefas atuais (aparece no topo da página Tarefas)
-export const periodoTarefas = "30 de outubro a 8 de novembro";
+export const periodoTarefas = "3 a 8 de novembro";
 
 export const empregados = [
   {
