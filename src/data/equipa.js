@@ -4,7 +4,7 @@
 // =======================================
 
 // Período das tarefas atuais (aparece no topo da página Tarefas)
-export const periodoTarefas = "3 a 8 de novembro";
+export const periodoTarefas = "10 a 15 de novembro";
 
 export const empregados = [
   {
@@ -21,7 +21,7 @@ export const empregados = [
   },
   {
     nome: "Ludmila", cor: "#87CEFA", diurno: "10:30 - 20:30", noturno: "—", direto: true,
-    tarefas: ["Lavar o chão", "Limpar a área da copa", "Esplanada", "Limpar os menus, frapés e galheteiros"],
+    tarefas: ["Vidros e montra de manhã", "Casas de banho", "Limpar os aparadores (quarta/quinta)", "Sala de vidro"],
   },
   {
     nome: "Márcia", cor: "#DA70D6", diurno: "10:00 - fecho", noturno: "—", direto: true,
@@ -29,7 +29,11 @@ export const empregados = [
   },
   {
     nome: "Niki", cor: "#14b8a6", diurno: "10:30 - 16:30", noturno: "18:15 - 23:30", direto: false,
-    tarefas: ["Vidros e montra de manhã", "Casas de banho", "Limpar os aparadores (quarta/quinta)", "Sala de vidro"],
+    tarefas: ["Lavar o chão de manhã", "Limpar a área da copa", "Esplanada", "Limpar os menus, frapés e galheteiros"],
+  },
+  {
+    nome: "Osmar", cor: "#FFA500", diurno: "10:00 - 15:45", noturno: "18:15 - 23:00", direto: false,
+    tarefas: ["Varrer o chão de manhã", "Talheres de manhã", "Montar a sala de dentro", "Lixo a noite"],
   },
   {
     nome: "Patrícia", cor: "#FA8072", diurno: "11:00 - 15:45", noturno: "18:15 - 00:00", direto: false,
